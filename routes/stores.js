@@ -1,9 +1,8 @@
 const express = require ('express');
 const router = express.Router();
+const { getStores } = require('../controllers/stores');
 
 // sample route
-router.get('/api/v1/stores', (req, res) => {
-    res.send('hello');
-});
+router.route('/').get(getStores);
 
 module.exports = router;
