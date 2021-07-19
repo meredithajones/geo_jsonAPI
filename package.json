@@ -1,0 +1,26 @@
+{
+  "name": "geo_jsonAPI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meredithajones/geo_jsonAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meredithajones/geo_jsonAPI/issues"
+  },
+  "homepage": "https://github.com/meredithajones/geo_jsonAPI#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3",
+    "node-geocoder": "^3.27.0"
+  }
+}
