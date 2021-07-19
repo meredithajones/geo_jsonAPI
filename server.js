@@ -14,10 +14,8 @@ app.use(express.json());
 //Enable CORS
 app.use(cors());
 
-// sample route
-app.get('/api/v1/stores', (req, res) => {
-    res.send('hello');
-});
+// Routes
+app.use('/api/v1/stores', require ('./routes/stores'));
 
 const PORT = process.env.PORT || 5000;
 
