@@ -8,6 +8,11 @@ const StoreSchema = new mongoose.Schema({
         trim: true,
         maxlength: [10, 'Store ID must be less than 10 chars']
     },
+
+    address: {
+        type: String,
+        required: [true, 'Please enter an address']
+    },
     //Boilerplate from mongoose docs
     location: {
         type: {
