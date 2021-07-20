@@ -1,8 +1,8 @@
 const express = require ('express');
 const router = express.Router();
-const { getStores } = require('../controllers/stores');
+const { getStores, addStore } = require('../controllers/stores');
 
 // sample route
-router.route('/').get(getStores);
+router.route('/').get(getStores).post(addStore);
 
 module.exports = router;
