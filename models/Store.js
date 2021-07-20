@@ -7,5 +7,23 @@ const StoreSchema = new mongoose.Schema({
         unique: true,
         trim: true,
         maxlength: [10, 'Store ID must be less than 10 chars']
-    }
-})
+    },
+    //Boilerplate from mongoose docs
+    location: {
+        type: {
+          type: String, 
+          enum: ['Point'], // 'location.type' must be 'Point'
+        },
+        coordinates: {
+          type: [Number],
+          index: '2dsphere'
+        },
+        formattedAddress: String
+      },
+      createdAt: {
+          type: Date,
+          default: Date.now
+      }
+});
+
+module.exports = mongoose.model('Store', StoreSchema);
