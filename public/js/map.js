@@ -7,7 +7,16 @@ const map = new mapboxgl.Map({
   center: [-75.165222, 39.952583],
 });
 
-function loadMap() {
+//fetch stores from API
+async function getStores() {
+    const res = await fetch('/api/V1/stores');
+    const data = await res.json();
+
+    console.log(data);
+}
+
+// Load map with locations
+function loadMap(stores) {
     map.on('load', function() {
         map.addLayer({
           id: 'points',
@@ -30,3 +39,5 @@ function loadMap() {
         });
       });
     }
+
+   getStores();
