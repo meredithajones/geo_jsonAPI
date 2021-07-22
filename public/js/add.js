@@ -23,3 +23,17 @@ async function addStore(e) {
       },
       body: JSON.stringify(sendBody)
     }):
+
+    if (res.status === 400) {
+        throw Error('Store already exists!');
+      }
+  
+      alert('Store added!');
+      window.location.href = '/index.html';
+    } catch (err) {
+      alert(err);
+      return;
+    }
+  }
+
+  storeForm.addEventListener('submit', addStore);
