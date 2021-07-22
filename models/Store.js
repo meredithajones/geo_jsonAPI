@@ -2,48 +2,46 @@ const mongoose = require('mongoose');
 const geocoder = require('../utils/geocoder');
 
 const StoreSchema = new mongoose.Schema({
-    storeId: {
-        type: String, 
-        required: [true, 'Please add a store ID'],
-        unique: true,
-        trim: true,
-        maxlength: [10, 'Store ID must be less than 10 chars']
+  storeId: {
+    type: String,
+    required: [true, 'Please add a store ID'],
+    unique: true,
+    trim: true,
+    maxlength: [10, 'Store ID must be less than 10 chars']
+  },
+  address: {
+    type: String,
+    required: [true, 'Please add an address']
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ['Point']
     },
-
-    address: {
-        type: String,
-        required: [true, 'Please enter an address']
+    coordinates: {
+      type: [Number],
+      index: '2dsphere'
     },
-    //Boilerplate from mongoose docs
-    location: {
-        type: {
-          type: String, 
-          enum: ['Point'], // 'location.type' must be 'Point'
-        },
-        coordinates: {
-          type: [Number],
-          index: '2dsphere'
-        },
-        formattedAddress: String
-      },
-      createdAt: {
-          type: Date,
-          default: Date.now
-      }
+    formattedAddress: String
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-//Geocode & create location
+// Geocode & create location
 StoreSchema.pre('save', async function(next) {
-    const locate = await geocoder.geocode(this.address)
-    this.location = {
-      type: 'Point',
-      coordinates: [locate[0].longitude, locate[0].latitude],
-      formattedAddress: locate[0].formattedAddress
-    }
+  const loc = await geocoder.geocode(this.address);
+  this.location = {
+    type: 'Point',
+    coordinates: [loc[0].longitude, loc[0].latitude],
+    formattedAddress: loc[0].formattedAddress
+  };
 
-    //Do not save address in database
-    this.address = undefined;
-    next();
+  // Do not save address
+  this.address = undefined;
+  next();
 });
 
 module.exports = mongoose.model('Store', StoreSchema);
