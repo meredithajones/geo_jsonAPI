@@ -22,18 +22,18 @@ async function addStore(e) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(sendBody)
-    }):
+    });
 
     if (res.status === 400) {
-        throw Error('Store already exists!');
-      }
-  
-      alert('Store added!');
-      window.location.href = '/index.html';
-    } catch (err) {
-      alert(err);
-      return;
+      throw Error('Store already exists!');
     }
-  }
 
-  storeForm.addEventListener('submit', addStore);
+    alert('Store added!');
+    window.location.href = '/index.html';
+  } catch (err) {
+    alert(err);
+    return;
+  }
+}
+
+storeForm.addEventListener('submit', addStore);
