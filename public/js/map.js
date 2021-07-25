@@ -7,44 +7,37 @@ const map = new mapboxgl.Map({
   center: [-75.165222, 39.952583],
 });
 
-map.on('load', function () {
-  // Load an image from an external URL.
-  map.loadImage(
-  'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png',
-  function (error, image) {
-  if (error) throw error;
-   
-  // Add the image to the map style.
-  map.addImage('cat', image);
-   
-  // Add a data source containing one point feature.
-  map.addSource('point', {
-  'type': 'geojson',
-  'data': {
-  'type': 'FeatureCollection',
-  'features': [
-  {
-  'type': 'Feature',
-  'geometry': {
-  'type': 'Point',
-  'coordinates': [-77.4144, 25.0759]
-  }
-  }
-  ]
-  }
+function loadMap() {
+  map.on("load", function () {
+    // Add a layer to use the image to represent the data.
+    map.addLayer({
+      id: "points",
+      type: "symbol",
+      source: {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [-75.165222, 39.952583],
+              },
+              properties: {
+                storeId: "0001",
+                icon: "shop",
+              },
+            },
+          ],
+        },
+      },
+      layout: {
+        'icon-image': '{icon}-15',
+        'icon-size': 1.5, 
+        'text-field': '{storeId}',
+        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold']
+      }
+    });
   });
-   
-  // Add a layer to use the image to represent the data.
-  map.addLayer({
-  'id': 'points',
-  'type': 'symbol',
-  'source': 'point', // reference the data source
-  'layout': {
-  'icon-image': 'cat', // reference the image
-  'icon-size': 0.25
-  }
-  });
-  }
-  );
-  });
-  
+}
