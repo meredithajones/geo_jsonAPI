@@ -7,7 +7,17 @@ const map = new mapboxgl.Map({
   center: [-75.165222, 39.952583],
 });
 
-function loadMap() {
+//Fetch stores from API
+
+//load map with locations
+async function getStores() {
+  const res = await fetch('/api/v1/stores');
+  const data = await res.json();
+
+  console.log(data);
+}
+
+function loadMap(stores) {
   map.on("load", function () {
     // Add a layer to use the image to represent the data.
     map.addLayer({
@@ -17,27 +27,34 @@ function loadMap() {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              geometry: {
-                type: "Point",
-                coordinates: [-75.165222, 39.952583],
-              },
-              properties: {
-                storeId: "0001",
-                icon: "shop",
-              },
-            },
-          ],
+          features: stores, 
+          // features: [
+          //   {
+          //     type: "Feature",
+          //     geometry: {
+          //       type: "Point",
+          //       coordinates: [-75.165222, 39.952583],
+          //     },
+          //     properties: {
+          //       storeId: "0001",
+          //       icon: "shop",
+          //     },
+          //   },
+          // ],
         },
       },
       layout: {
         'icon-image': '{icon}-15',
         'icon-size': 1.5, 
         'text-field': '{storeId}',
-        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold']
+        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+        'text-offset':[0, 0.9],
+        'text-anchor': 'top',
+
       }
+
     });
   });
 }
+
+getStores();
