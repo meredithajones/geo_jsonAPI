@@ -1,8 +1,8 @@
 const Store = require('../models/Store');
 
-// @desc  Get all stores
-// @route GET /api/v1/stores
-// @access Public
+// Get all stores
+// GET /api/v1/stores
+// Public
 exports.getStores = async (req, res, next) => {
   try {
     const stores = await Store.find();
@@ -18,9 +18,9 @@ exports.getStores = async (req, res, next) => {
   }
 };
 
-// @desc  Create a store
-// @route POST /api/v1/stores
-// @access Public
+//Create a store
+//POST /api/v1/stores
+// Public
 exports.addStore = async (req, res, next) => {
   try {
     const store = await Store.create(req.body);
