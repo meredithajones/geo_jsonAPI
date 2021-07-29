@@ -15,8 +15,15 @@ const app = express();
 // Body parser
 app.use(express.json());
 
+
 // Enable cors
-app.use(cors());
+var corsOptions = {
+  origin: 'http://localhost:5000',
+  optionsSuccessStatus: 200, // For legacy browser support
+  methods: "GET, PUT"
+}
+
+app.use(cors(corsOptions));
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
