@@ -36,6 +36,14 @@ async function getStores() {
 // Load map with stores
 function loadMap(stores) {
   map.on('load', function() {
+    map.loadImage(
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScvh5OpVfEzZara1q9hvgYWRTCvXeXqeh-Pw&usqp=CAU',
+      function (error, image) {
+      if (error) throw error;
+       
+      // Add the image to the map style.
+      map.addImage('plant', image);
+
     map.addLayer({
       id: 'points',
       type: 'symbol',
@@ -47,9 +55,9 @@ function loadMap(stores) {
         }
       },
       layout: {
-        'icon-image': '{icon}-15',
+        'icon-image': 'plant',
         'icon-size': 1.5,
-        'text-field': '{storeId}',
+        'text-field': '{name}',
         'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
         'text-offset': [0, 0.9],
         'text-anchor': 'top'
