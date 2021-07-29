@@ -25,7 +25,7 @@ async function getStores() {
       properties: {
         storeId: store.storeId,
         icon: 'plant',
-        name: 'locationName'
+        name: locationName
       }
     };
   });
@@ -37,7 +37,7 @@ async function getStores() {
 function loadMap(stores) {
   map.on('load', function() {
     map.loadImage(
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScvh5OpVfEzZara1q9hvgYWRTCvXeXqeh-Pw&usqp=CAU',
+      'https://preview.pixlr.com/images/800wm/1117/1/1117100733.jpg',
       function (error, image) {
       if (error) throw error;
        
@@ -58,7 +58,7 @@ function loadMap(stores) {
     
       layout: {
         'icon-image': 'plant',
-        'icon-size': 1.5,
+        'icon-size': .5,
         'text-field': '{name}',
         'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
         'text-offset': [0, 0.9],
