@@ -24,7 +24,7 @@ async function getStores() {
       },
       properties: {
         storeId: store.storeId,
-        icon: 'shop',
+        icon: 'plant',
         name: 'locationName'
       }
     };
@@ -43,6 +43,7 @@ function loadMap(stores) {
        
       // Add the image to the map style.
       map.addImage('plant', image);
+    });
 
     map.addLayer({
       id: 'points',
@@ -54,6 +55,7 @@ function loadMap(stores) {
           features: stores
         }
       },
+    
       layout: {
         'icon-image': 'plant',
         'icon-size': 1.5,
@@ -65,5 +67,6 @@ function loadMap(stores) {
     });
   });
 }
+
 
 getStores();
