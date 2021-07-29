@@ -24,7 +24,8 @@ async function getStores() {
       },
       properties: {
         storeId: store.storeId,
-        icon: 'shop'
+        icon: 'shop',
+        name: 'locationName'
       }
     };
   });

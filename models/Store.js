@@ -13,6 +13,12 @@ const StoreSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add an address']
   },
+
+  name: {
+    type: String,
+    required: [true, 'Please add a name for the location']
+  },
+
   location: {
     type: {
       type: String,
