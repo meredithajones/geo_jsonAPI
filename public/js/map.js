@@ -29,7 +29,7 @@ async function getStores() {
       }
     };
   });
-
+  console.log(locationName);
   loadMap(stores);
 }
 

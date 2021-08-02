@@ -3,6 +3,7 @@ const storeId = document.getElementById('store-id');
 const storeAddress = document.getElementById('store-address');
 const locationName = document.getElementById('location-name');
 
+
 // Send POST to API to add store
 async function addStore(e) {
   e.preventDefault();
@@ -39,3 +40,5 @@ async function addStore(e) {
 }
 
 storeForm.addEventListener('submit', addStore);
+
+
