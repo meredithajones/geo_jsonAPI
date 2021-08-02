@@ -25,7 +25,7 @@ async function getStores() {
       properties: {
         storeId: store.storeId,
         icon: 'plant',
-        name: locationName
+        name: store.locationName
       }
     };
   });

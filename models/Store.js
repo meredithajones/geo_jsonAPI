@@ -14,7 +14,7 @@ const StoreSchema = new mongoose.Schema({
     required: [true, 'Please add an address']
   },
 
-  name: {
+  locationName: {
     type: String,
     required: [true, 'Please add a name for the location']
   },
