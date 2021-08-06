@@ -7,6 +7,12 @@ const map = new mapboxgl.Map({
   center: [-75.165222, 39.952583],
 });
 
+// FETCH stores from API
+function getLocations(locations) {
+    const res = await fetch();
+}
+
+
 function loadMap() {
   map.on("load", function () {
     map.loadImage(
@@ -25,27 +31,30 @@ function loadMap() {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              geometry: {
-                type: "Point",
-                coordinates: [-75.165222, 39.952583],
-              },
-              properties: {
-                storeId: "0001",
-                icon: "shop",
-              },
-            },
-          ],
+          features: locations,
+        //   features: [
+        //     {
+        //       type: "Feature",
+        //       geometry: {
+        //         type: "Point",
+        //         coordinates: [-75.165222, 39.952583],
+        //       },
+
+        //       properties: {
+        //         storeId: "0001",
+        //         icon: "shop",
+        //         locationName: "Miss Rachel's"
+        //       },
+        //     },
+        //   ],
         },
       },
       layout: {
         "icon-image": 'plant',
         "icon-size": 0.10,
-        "text-field": "{storeId}",
+        "text-field": "{locationName}",
         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-        "text-offset": [0, 0.9],
+        "text-offset": [0, 1.3],
         "text-anchor": "top",
     }
 });
