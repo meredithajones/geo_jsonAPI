@@ -9,6 +9,14 @@ const map = new mapboxgl.Map({
 
 function loadMap() {
   map.on("load", function () {
+    map.loadImage(
+        'assets/imgs/plant.jpeg',
+        function (error, image) {
+        if (error) throw error;
+         
+        // Add the image to the map style.
+        map.addImage('plant', image);
+    });
     // Add a layer to use the image to represent the data.
     map.addLayer({
       id: "points",
@@ -33,15 +41,16 @@ function loadMap() {
         },
       },
       layout: {
-        "icon-image": "{icon}-15",
-        "icon-size": 0.25,
+        "icon-image": 'plant',
+        "icon-size": 0.10,
         "text-field": "{storeId}",
         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
         "text-offset": [0, 0.9],
         "text-anchor": "top",
-      },
-    });
-  });
+    }
+});
+});
 }
+
 
 loadMap();
