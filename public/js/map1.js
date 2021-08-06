@@ -3,7 +3,7 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/streets-v11",
-  zoom: 10,
+  zoom: 12,
   center: [-75.165222, 39.952583],
 });
 
@@ -29,7 +29,6 @@ async function getStores() {
       }
     };
   });
-  console.log(locationName);
   loadMap(stores);
 }
 
