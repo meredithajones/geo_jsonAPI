@@ -7,22 +7,27 @@ const map = new mapboxgl.Map({
   center: [-75.165222, 39.952583],
 });
 
-function loadMap () {
-        // Add a layer to use the image to represent the data.
-        map.addLayer({
-        id: 'points',
-        type: 'symbol',
-        source: {
-             type: 'geojson',
-        data: {
-            type: 'FeatureCollection',
-            'features': [
-            {
-            'type': 'Feature',
-            'geometry': {
-            'type': 'Point',
-            'coordinates': [-77.4144, 25.0759]
-        }
-        });
-        
+function loadMap() {
+  // Add a layer to use the image to represent the data.
+  map.addLayer({
+    id: "points",
+    type: "symbol",
+    source: {
+      type: "geojson",
+      data: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [-75.165222, 39.952583],
+            },
+          },
+        ],
+      },
+    },
+  });
 }
+
+loadMap();
