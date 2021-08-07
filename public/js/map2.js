@@ -9,7 +9,7 @@ const map = new mapboxgl.Map({
 
 // FETCH stores from API
 function getLocations(locations) {
-    const res = await fetch();
+    const res = await fetch('/api/v1/locations');
 }
 
 
@@ -62,4 +62,4 @@ function loadMap() {
 }
 
 
-loadMap();
+getStores();
