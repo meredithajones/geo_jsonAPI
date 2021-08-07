@@ -8,9 +8,21 @@ const map = new mapboxgl.Map({
 });
 
 // FETCH stores from API
-function getLocations(locations) {
-    const res = await fetch('/api/v1/locations');
+function getLocations(stores) {
+    const res = await fetch('/api/v1/stores');
+    const data = await res.json();
 }
+
+const stores = data.data.map(stores => {
+    return {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          store.location.coordinates[0],
+          store.location.coordinates[1]
+        ]
+      },
 
 
 function loadMap() {
