@@ -23,6 +23,15 @@ const stores = data.data.map(stores => {
           store.location.coordinates[1]
         ]
       },
+      properties: {
+        storeId: store.storeId,
+        icon: 'plant',
+        name: store.locationName
+      }
+    };
+  });
+  loadMap(stores);
+}
 
 
 function loadMap() {
